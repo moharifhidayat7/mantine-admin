@@ -1,14 +1,14 @@
 import Head from "next/head";
 import { Title, Box } from "@mantine/core";
 
-export default function Home() {
+export default function Index() {
   return (
     <>
       <Head>
-        <title>Dashboard</title>
+        <title>Master Inventaris</title>
       </Head>
       <Title order={1} style={{ marginBottom: "1.5rem" }}>
-        Dashboard
+        Data Inventaris
       </Title>
       <Box
         sx={(theme) => ({
