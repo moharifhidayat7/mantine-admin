@@ -1,9 +1,22 @@
+import { useState } from "react";
 import Head from "next/head";
-import { MantineProvider } from "@mantine/core";
+import Layout from "@components/views/Layout";
+import {
+  MantineProvider,
+  ColorSchemeProvider,
+  ColorScheme,
+} from "@mantine/core";
+
+import { GlobalContextProvider } from "@components/contexts/GlobalContext";
+
+import "@styles/globals.css";
 
 export default function App(props) {
   const { Component, pageProps } = props;
+  const [colorScheme, setColorScheme] = useState("light");
 
+  const toggleColorScheme = (value) =>
+    setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
   return (
     <>
       <Head>
@@ -14,16 +27,24 @@ export default function App(props) {
         />
       </Head>
 
-      <MantineProvider
-        withGlobalStyles
-        withNormalizeCSS
-        theme={{
-          /** Put your mantine theme override here */
-          colorScheme: "light",
-        }}
+      <ColorSchemeProvider
+        colorScheme={colorScheme}
+        toggleColorScheme={toggleColorScheme}
       >
-        <Component {...pageProps} />
-      </MantineProvider>
+        <MantineProvider
+          withGlobalStyles
+          withNormalizeCSS
+          theme={{
+            colorScheme: colorScheme,
+          }}
+        >
+          <GlobalContextProvider>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </GlobalContextProvider>
+        </MantineProvider>
+      </ColorSchemeProvider>
     </>
   );
 }
