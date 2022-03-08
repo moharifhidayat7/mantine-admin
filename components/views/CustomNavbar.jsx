@@ -28,13 +28,11 @@ const CustomNavbar = (props) => {
           menu.items ? (
             <Menu.Items icon={menu.icon} href={menu.href} text={menu.text}>
               {menu.items.map((item) => (
-                <>
-                  <Menu.Items.Item href={item.href} text={item.text} />
-                </>
+                  <Menu.Items.Item href={item.href} text={item.text} key={item.href}/>
               ))}
             </Menu.Items>
           ) : (
-            <Menu.Item icon={menu.icon} href={menu.href} text={menu.text} />
+            <Menu.Item icon={menu.icon} href={menu.href} text={menu.text} key={menu.href} />
           )
         )}
       </Menu>
