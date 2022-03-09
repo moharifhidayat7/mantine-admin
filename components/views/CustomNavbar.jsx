@@ -1,8 +1,17 @@
 import { useState } from "react";
-import { Navbar, Box, Group, Text, createStyles } from "@mantine/core";
+import {
+  Navbar,
+  ScrollArea,
+  Box,
+  Group,
+  Text,
+  createStyles,
+  Divider,
+} from "@mantine/core";
 import { IconHome, IconDatabase } from "@tabler/icons";
 import Link from "next/link";
 import Menu from "@components/Menu";
+import User from "@components/User";
 
 const CustomNavbar = (props) => {
   const menus = [
@@ -23,19 +32,38 @@ const CustomNavbar = (props) => {
 
   return (
     <Navbar {...props}>
-      <Menu>
-        {menus.map((menu) =>
-          menu.items ? (
-            <Menu.Items icon={menu.icon} href={menu.href} text={menu.text}>
-              {menu.items.map((item) => (
-                  <Menu.Items.Item href={item.href} text={item.text} key={item.href}/>
-              ))}
-            </Menu.Items>
-          ) : (
-            <Menu.Item icon={menu.icon} href={menu.href} text={menu.text} key={menu.href} />
-          )
-        )}
-      </Menu>
+      <Navbar.Section grow component={ScrollArea}>
+        <Menu>
+          {menus.map((menu, index) =>
+            menu.items ? (
+              <Menu.Items
+                icon={menu.icon}
+                text={menu.text}
+                key={`menu-${index}`}
+              >
+                {menu.items.map((item) => (
+                  <Menu.Items.Item
+                    href={item.href}
+                    text={item.text}
+                    key={item.href}
+                  />
+                ))}
+              </Menu.Items>
+            ) : (
+              <Menu.Item
+                icon={menu.icon}
+                href={menu.href}
+                text={menu.text}
+                key={menu.href}
+              />
+            )
+          )}
+        </Menu>
+      </Navbar.Section>
+      <Divider my="xs" />
+      <Navbar.Section>
+        <User />
+      </Navbar.Section>
     </Navbar>
   );
 };
