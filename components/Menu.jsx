@@ -49,29 +49,30 @@ const Menu = ({ children }) => {
 
 const Item = ({ icon, text, href }) => {
   return (
-    <Link href={href} passHref>
-      <Box
-        component="a"
-        sx={(theme) => ({
-          padding: theme.spacing.xs,
-          borderRadius: theme.radius.sm,
-          cursor: "pointer",
-          "&:hover": {
-            backgroundColor:
-              theme.colorScheme === "dark"
-                ? theme.colors.dark[5]
-                : theme.colors.gray[1],
-          },
-        })}
-      >
-        <Group>
-          {icon}
-          <div>
-            <Text weight={500}>{text}</Text>
-          </div>
-        </Group>
-      </Box>
-    </Link>
+    <div>
+      <Link href={href} passHref>
+        <Box component="a">
+          <Group
+            sx={(theme) => ({
+              padding: theme.spacing.xs,
+              borderRadius: theme.radius.sm,
+              cursor: "pointer",
+              "&:hover": {
+                backgroundColor:
+                  theme.colorScheme === "dark"
+                    ? theme.colors.dark[5]
+                    : theme.colors.gray[1],
+              },
+            })}
+          >
+            {icon}
+            <div>
+              <Text weight={500}>{text}</Text>
+            </div>
+          </Group>
+        </Box>
+      </Link>
+    </div>
   );
 };
 
@@ -104,11 +105,7 @@ const Items = ({ icon, children, text }) => {
       >
         <Group>
           {icon}
-          <div
-            style={{
-              flexGrow: 1,
-            }}
-          >
+          <div style={{ flex: "1 1 0%" }}>
             <Text weight={500}>{text}</Text>
           </div>
           {show ? (
