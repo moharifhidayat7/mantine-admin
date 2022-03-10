@@ -12,11 +12,7 @@ const ThemeToggle = () => {
       onClick={() => toggleColorScheme()}
       title="Toggle color scheme"
     >
-      {dark ? (
-        <IconSun style={{ width: 18, height: 18 }} />
-      ) : (
-        <IconMoon style={{ width: 18, height: 18 }} />
-      )}
+      {dark ? <IconSun size={20} /> : <IconMoon size={20} />}
     </ActionIcon>
   );
 };
