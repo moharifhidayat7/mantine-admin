@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
           padding="md"
           hiddenBreakpoint="sm"
           hidden={!state.showSidebar}
-          width={{ sm: 200, lg: 250 }}
+          width={{ sm: 250, lg: 300 }}
         />
       }
       header={<CustomHeader height={70} padding="md" />}
