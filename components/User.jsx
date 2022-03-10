@@ -89,10 +89,10 @@ const UserMenu = () => {
   return (
     <div style={{ padding: theme.spacing.xs }}>
       <Text size="sm" weight={500}>
-        tes asd adas asd ad adasd asds
+        tes asd adasdk hadhas kdhaskdjashdks
       </Text>
       <Text color="dimmed" size="xs">
-        tes
+        tesasdjsalkdjasldksdfksdjfkdsjfksdjkfjdskfjdskjasldj@gmail.com
       </Text>
     </div>
   );
@@ -108,7 +108,7 @@ const User = () => {
       placement={largeScreen ? "end" : "center"}
       position={largeScreen ? "right" : "top"}
       trigger="hover"
-      style={{ minWidth: "100%" }}
+      style={{ width: "100%" }}
       delay={500}
       control={
         <UserButton
